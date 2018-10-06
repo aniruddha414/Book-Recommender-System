@@ -8,6 +8,8 @@
 7.If credentials are valid than recommendations are displayed in next window.
 8.Check for valid userIDs from processed_users.csv or database.
 
+check out the screenshots of frame1 and frame2.
+
 Dependencies:
   make sure java and R are installed on your machine.
   
