@@ -1,0 +1,6 @@
+#function that returns book Info
+getBookInfo <- function(book_id){
+  df_books <- readBooks()
+  bookInfo <- df_books[which(df_books$book_id == book_id),c(2,3,7)]
+  return(bookInfo)
+}

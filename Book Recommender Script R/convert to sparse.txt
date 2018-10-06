@@ -1,0 +1,3 @@
+ sparse_ratings <- as(ratingmat0, "sparseMatrix")
+  rm(ratingmat0)
+  gc()
