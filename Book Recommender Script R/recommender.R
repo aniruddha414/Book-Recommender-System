@@ -58,14 +58,14 @@ getSparseMatrix <- function() {
   return(sparse_ratings)
 }
 getRecommendations <- function(c_user) {
-  # Load all the libraries
   loadLibraries()
   current_user <- as.character(c_user)
   
   #get sparse of rating matrix
   sparse_ratings <- getSparseMatrix()
   # already rated
-  #alreadyRead <- df_ratings[which(df_ratings$user_id == current_user),2]
+  df_ratings <- readRatings()
+  alreadyRead <- df_ratings[which(df_ratings$user_id == current_user),2]
   
   real_ratings <- new("realRatingMatrix", data = sparse_ratings)
   
@@ -77,9 +77,8 @@ getRecommendations <- function(c_user) {
     arrange(-rating) %>% .[1:5,] %>% 
     mutate(book_id = as.numeric(as.character(item)))
   # check is already read books is present
-  #recommendation <-recommendation[which(!(recommendation$book_id %in% alreayRead)),]
+  recommendation <-recommendation[which(!(recommendation$book_id %in% alreadyRead)),]
   
   recommended_book_ids <- as.integer(recommendation[,4])
   return(recommended_book_ids)
 }
-
